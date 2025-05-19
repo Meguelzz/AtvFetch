@@ -20,7 +20,7 @@ form.addEventListener('submit', e => {
         <p>${data.weather[0].description}</p>
         <p>${emoji}</p>`;
         
-        fetch('main.php', {
+        fetch('src/php/main.php', {
         method: 'POST',
         body: city
     })
@@ -39,7 +39,8 @@ form.addEventListener('submit', e => {
                 <div><td>${item.data}</td>
                 <td>${item.cidade}</td></div>
         </tr>
-            `).join('')}</table>
+            `).join('')}
+            </table>
             <br>
             <button onclick="limparHistorico()">Limpar</button>
         `;
@@ -60,7 +61,7 @@ function criarElementoHistorico() {
 }
 
 function limparHistorico() {
-    fetch('main.php?limpar=true')
+    fetch('src/php/main.php?limpar=true')
         .then(res => res.json())
         .then(() => {
             document.getElementById('historico').innerHTML = '';
